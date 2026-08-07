@@ -1,47 +1,35 @@
 @echo off
-echo AI Meeting Assistant - GitHub Deployment Helper
-echo ==============================================
+REM Deployment script for AI Meeting Assistant
+echo AI Meeting Assistant - GitHub Deployment
 echo.
 
-REM Check if Python is available
-python --version >nul 2>nul
+REM Check if git is installed
+where git >nul 2>nul
 if errorlevel 1 (
-    echo WARNING: Python not found or not in PATH
-    echo Attempting to run basic deployment steps...
-    goto :basic_deploy
-) else (
-    goto :python_deploy
+    echo ERROR: Git is not installed or not in PATH
+    echo Please install git from: https://git-scm.com/downloads
+    pause
+    exit /b 1
 )
 
-:python_deploy
-echo Running Python deployment script...
-python deploy_to_github.py
-pause
-exit /b
+REM Change to project directory
+cd /d "%~dp0"
 
-:basic_deploy
+echo Step 1: Add remote repository
+echo Run this command after creating repository on GitHub:
+echo git remote add origin https://github.com/YOUR_USERNAME/AI-Meeting-Assistant.git
 echo.
-echo Basic GitHub Deployment Instructions:
-echo ====================================
+
+echo Step 2: Rename branch to main
+git branch -M main
 echo.
-echo 1. First, make sure Git is installed: https://git-scm.com/downloads
+
+echo Step 3: Push to GitHub
+echo Run this command to upload:
+echo git push -u origin main
 echo.
-echo 2. Open Command Prompt in this folder and run:
-echo    git init
-echo    git add .
-echo    git commit -m "Initial commit: AI Meeting Assistant Project"
+
+echo Done! Your project is ready for GitHub.
 echo.
-echo 3. Create a new repository at: https://github.com/new
-echo    - Name: AI-Meeting-Assistant
-echo    - Description: ESP32-based meeting recording system with AI processing
-echo    - Do NOT initialize with README, .gitignore, or license
-echo.
-echo 4. Connect and push:
-echo    git remote add origin https://github.com/YOUR_USERNAME/AI-Meeting-Assistant.git
-echo    git branch -M main
-echo    git push -u origin main
-echo.
-echo 5. Add this to your resume:
-echo    GitHub: https://github.com/YOUR_USERNAME/AI-Meeting-Assistant
-echo.
+echo For your resume, use: https://github.com/YOUR_USERNAME/AI-Meeting-Assistant
 pause
