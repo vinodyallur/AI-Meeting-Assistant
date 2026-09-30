@@ -2,6 +2,10 @@
 
 A real-time meeting recording system with ESP32-based hardware and cloud-based AI processing for automated meeting transcription, summarization, and documentation.
 
+<p align="center">
+   <img src="documentation/images/ai-meeting-assistant.jpeg" alt="AI Meeting Assistant project" width="620" />
+</p>
+
 ## Project Overview
 
 This system captures meetings through ESP32 devices with audio and video capabilities, streams the data to Azure cloud services, and uses AI for speech-to-text transcription, summarization, and meeting insights generation.
